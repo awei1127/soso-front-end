@@ -3,13 +3,13 @@ import ModalAdding from '../components/ModalAdding.vue'
 </script>
 
 <template>
-  <main class="home">
+  <main class="cart-list">
     <ModalAdding />
   </main>
 </template>
 
 <style scoped>
-.home {
+.cart-list {
   background-color: rgba(0, 176, 234, 0.5);
   height: 100vh;
   display: flex;
