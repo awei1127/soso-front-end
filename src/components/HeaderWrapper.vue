@@ -4,7 +4,7 @@ import SearchBar from './SearchBar.vue'
 </script>
 
 <template>
-  <div class="d-flex justify-content-between header-wrapper">
+  <div class="d-flex justify-content-between align-items-center header-wrapper">
     <SosoLogo />
     <SearchBar />
   </div>
@@ -12,6 +12,6 @@ import SearchBar from './SearchBar.vue'
 
 <style scoped>
 .header-wrapper {
-  height: 10rem;
+  height: 8rem;
 }
 </style>

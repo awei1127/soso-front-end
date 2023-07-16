@@ -28,6 +28,7 @@ import PaginationBar from './PaginationBar.vue'
     <ProductCard />
     <ProductCard />
     <ProductCard />
+    <ProductCard />
   </div>
   <!--分頁器-->
   <PaginationBar />

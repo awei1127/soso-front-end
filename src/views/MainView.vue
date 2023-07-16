@@ -14,6 +14,6 @@ import MainWrapper from '../components/MainWrapper.vue'
 
 <style scoped>
 .main-view {
-  background-color: rgba(255, 153, 28, 0.7);
+  background-color: rgba(225, 247, 255, 0.7);
 }
 </style>
