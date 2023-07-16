@@ -1,0 +1,24 @@
+<template>
+  <div class="category-section">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled">Disabled</a>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<style scoped>
+.category-section {
+  min-width: 15rem;
+}
+</style>
