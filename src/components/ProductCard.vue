@@ -1,16 +1,26 @@
 <script setup>
-
+defineProps({
+  product: {
+    type: Object
+  }
+})
 </script>
 
 <template>
   <div class="card">
-    <img src="https://loremflickr.com/320/320/restaurant,food/?random={{ Math.random() * 100 }}" class="card-img-top"
-      alt="...">
+    <img :src="product.image" class="card-img-top" alt="product image">
     <div class="card-body">
-      <h5 class="card-title">我是商品名稱</h5>
-      <p class="card-text">Some quick example text to build on the card.
-      </p>
-      <a href="#" class="btn btn-outline-primary">加入購物車</a>
+      <h5 class="card-title">{{ product.name }}</h5>
+      <p class="card-text text-truncate">{{ product.description }}</p>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>＄{{ product.price }}</div>
+        <div v-if="product.stock > 0">
+          <a href="#" class="btn btn-outline-primary">加入購物車</a>
+        </div>
+        <div v-else>
+          <a class="btn btn-outline-primary disabled">沒有庫存</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
