@@ -1,9 +1,22 @@
 <script setup>
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { ref } from 'vue'
 
 const route = useRoute()
+const router = useRouter()
 const sortBy = ref(route.query.sortBy)
+const lowestPrice = ref(null)
+const highestPrice = ref(null)
+const submitPrice = () => {
+  router.push({
+    path: '/products',
+    query: {
+      ...route.query,
+      lowestPrice: lowestPrice.value,
+      highestPrice: highestPrice.value
+    }
+  })
+}
 
 const setSortBy = (value) => {
   sortBy.value = value
@@ -38,15 +51,11 @@ const setSortBy = (value) => {
             價格<i class="fa-solid fa-arrows-up-down"></i>
           </router-link>
         </li>
-        <li class="nav-item">
-          <input type="text" class="form-control ms-2" placeholder="最低價">
-        </li>
-        <li class="nav-item">
-          <input type="text" class="form-control ms-2" placeholder="最高價">
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">確認</a>
-        </li>
+        <form class="nav-item d-flex" @submit.prevent="submitPrice">
+          <input v-model="lowestPrice" type="text" class="form-control ms-2" placeholder="最低價">
+          <input v-model="highestPrice" type="text" class="form-control ms-2" placeholder="最高價">
+          <button class="btn" type="submit">確認</button>
+        </form>
       </ul>
       <!--這裡可以加個簡易分頁器-->
     </div>
@@ -68,5 +77,10 @@ input::placeholder {
 
 .active {
   background-color: rgb(176, 237, 237);
+}
+
+button {
+  color: rgba(0, 0, 0, 0.65);
+  text-decoration: none;
 }
 </style>
