@@ -5,8 +5,13 @@ import { ref, onMounted } from 'vue'
 const categoriesData = ref(null)
 const categoriesStatus = ref('')
 
-onMounted(async () => {
+onMounted(() => {
   // 取得分類資料
+  fetchCategories()
+})
+
+// 定義函數：取得分類資料
+async function fetchCategories() {
   try {
     const response = await axios.get(`${import.meta.env.VITE_HOST}/api/v1/categories`)
     if (response.data.status === 'success') { // 若狀態為成功，將取得的資料交給響應式物件
@@ -19,7 +24,7 @@ onMounted(async () => {
     categoriesStatus.value = 'error'
     console.error(err)
   }
-})
+}
 
 </script>
 

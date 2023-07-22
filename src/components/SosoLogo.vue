@@ -1,8 +1,8 @@
 <template>
-  <div class="soso-logo d-flex flex-column">
+  <a class="soso-logo d-flex flex-column" href="/products">
     <span class="main text-primary">SOSO</span>
     <span class="sub text-end">購物網</span>
-  </div>
+  </a>
 </template>
 
 <style scoped>
@@ -20,5 +20,10 @@
   font-size: 1.5rem;
   line-height: 1;
 
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
 </style>

@@ -1,3 +1,8 @@
+<script setup>
+import { useRoute } from 'vue-router'
+const route = useRoute()
+</script>
+
 <template>
   <nav class="navbar navbar-expand-lg navbar-light filter-bar">
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -9,7 +14,9 @@
           <a class="nav-link">最新</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">價格<i class="fa-solid fa-arrows-up-down"></i></a>
+          <router-link :to="{ path: '/products', query: { ...route.query, sortBy: 'lowprice' } }" class="nav-link">
+            價格<i class="fa-solid fa-arrows-up-down"></i>
+          </router-link>
           <!--上箭頭<i class="fa-solid fa-arrow-up"></i>-->
           <!--下箭頭<i class="fa-solid fa-arrow-down"></i>-->
         </li>
