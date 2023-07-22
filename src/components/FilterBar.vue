@@ -1,6 +1,14 @@
 <script setup>
 import { useRoute } from 'vue-router'
+import { ref } from 'vue'
+
 const route = useRoute()
+const sortBy = ref(route.query.sortBy)
+
+const setSortBy = (value) => {
+  sortBy.value = value
+}
+
 </script>
 
 <template>
@@ -10,15 +18,25 @@ const route = useRoute()
         <li class="nav-item">
           <a class="nav-link disabled">篩選</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link">最新</a>
+        <li class="nav-item" :class="{ active: sortBy === 'newest' }" @click="setSortBy('newest')">
+          <router-link :to="{ path: '/products', query: { ...route.query, sortBy: 'newest' } }" class="nav-link">
+            最新
+          </router-link>
         </li>
-        <li class="nav-item">
-          <router-link :to="{ path: '/products', query: { ...route.query, sortBy: 'lowprice' } }" class="nav-link">
+        <li v-if="sortBy === 'lowestPrice'" class="nav-item active" @click="setSortBy('highestPrice')">
+          <router-link :to="{ path: '/products', query: { ...route.query, sortBy: 'highestPrice' } }" class="nav-link">
+            價格<i class="fa-solid fa-arrow-up"></i>
+          </router-link>
+        </li>
+        <li v-else-if="sortBy === 'highestPrice'" class="nav-item active" @click="setSortBy('lowestPrice')">
+          <router-link :to="{ path: '/products', query: { ...route.query, sortBy: 'lowestPrice' } }" class="nav-link">
+            價格<i class="fa-solid fa-arrow-down"></i>
+          </router-link>
+        </li>
+        <li v-else class="nav-item" @click="setSortBy('lowestPrice')">
+          <router-link :to="{ path: '/products', query: { ...route.query, sortBy: 'lowestPrice' } }" class="nav-link">
             價格<i class="fa-solid fa-arrows-up-down"></i>
           </router-link>
-          <!--上箭頭<i class="fa-solid fa-arrow-up"></i>-->
-          <!--下箭頭<i class="fa-solid fa-arrow-down"></i>-->
         </li>
         <li class="nav-item">
           <input type="text" class="form-control ms-2" placeholder="最低價">
