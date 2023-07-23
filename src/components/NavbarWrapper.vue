@@ -1,6 +1,6 @@
 <script setup>
 import axios from 'axios'
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import SignInModal from './SignInModal.vue'
 import { useStore } from 'vuex'
 
@@ -15,6 +15,17 @@ onMounted(() => {
     fetchUser()
   }
 })
+
+/* 目前使用者若從加入購物車或購物車登入會無法更新暱稱，若用watch則登出時會動作兩次
+watch(
+  // 監聽userToken.value的變化
+  () => userToken.value,
+  // 當變化時，取得使用者資料
+  () => {
+    fetchUser()
+  }
+)
+*/
 
 // 定義函數：取得使用者資料
 async function fetchUser() {
@@ -42,6 +53,7 @@ async function fetchUser() {
 function logout() {
   store.commit('SET_USER_TOKEN', '')
   localStorage.removeItem('userToken')
+  alert('你已成功登出')
 }
 
 </script>
