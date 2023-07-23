@@ -1,10 +1,11 @@
 <script setup>
 import axios from 'axios'
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 
 const account = ref('')
 const password = ref('')
-const userStatus = ref('')
+const store = useStore()
 
 // 定義函數：送出登入資訊
 async function signIn() {
@@ -13,15 +14,13 @@ async function signIn() {
       account: account.value,
       password: password.value
     })
-    if (response.data.status === 'success') { // 若狀態為成功，將取得的token儲存到Vuex存儲或者localStorage
-      localStorage.setItem('userToken', response.data.data.token)
-      userStatus.value = 'success'
-      console.log('success')
-    } else { // 若狀態為失敗，將響應式物件的值設為error
-      userStatus.value = 'error'
+    if (response.data.status === 'success') { // 若狀態為成功，將取得的token儲存到Vuex store
+      store.commit('SET_USER_TOKEN', response.data.data.token)
+      console.log('signin success')
+    } else { // 若狀態為失敗，打印訊息
+      console.log('signin failure')
     }
-  } catch (err) { // 若有錯誤，將響應式物件的值設為error
-    userStatus.value = 'error'
+  } catch (err) { // 若有錯誤，打印訊息
     console.error(err)
   }
 }
