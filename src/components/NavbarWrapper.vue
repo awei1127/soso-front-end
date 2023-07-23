@@ -1,6 +1,7 @@
 <script setup>
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
+import SignInModal from './SignInModal.vue'
 
 const userData = ref(null)
 const userStatus = ref('')
@@ -46,9 +47,9 @@ async function fetchUser() {
           </li>
           <li v-else class="nav-item">
             <!--這個購物車要顯示登入modal-->
-            <a class="nav-link" href="#">購物車#</a>
+            <a class="nav-link" data-bs-toggle="modal" data-bs-target="#signInModal">購物車</a>
           </li>
-          <li v-if="userStatus !== 'success'" class="nav-item">
+          <li v-if="userStatus !== 'success'" class="nav-item" data-bs-toggle="modal" data-bs-target="#signInModal">
             <a class="nav-link">登入</a>
           </li>
           <li v-if="userStatus !== 'success'" class="nav-item">
@@ -64,10 +65,15 @@ async function fetchUser() {
       </div>
     </div>
   </nav>
+  <SignInModal />
 </template>
 
 <style scoped>
 .navbar-wrapper {
   background-color: #ececec;
+}
+
+a {
+  cursor: pointer;
 }
 </style>
