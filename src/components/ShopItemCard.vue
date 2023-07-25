@@ -49,12 +49,13 @@ async function toggleShopItem(shopItemId) {
     </div>
     <!--商品圖片-->
     <div class="img-frame">
-      <img :src="shopItem.image" class="img-fluid rounded-start" alt="product-image">
+      <img v-if="shopItem.image" :src="shopItem.image" class="img-fluid rounded-start" alt="product-image">
+      <i v-else class="fa-solid fa-bag-shopping fa-2xl"></i>
     </div>
     <!--商品名稱 描述-->
     <div class="product-title mx-3">
       <h3 class="card-title">{{ shopItem.name }}</h3>
-      <h3 class="description">{{ shopItem.description }}</h3>
+      <p class="description">{{ shopItem.description }}</p>
     </div>
     <!--商品庫存-->
     <div class="mx-3">
@@ -74,6 +75,9 @@ async function toggleShopItem(shopItemId) {
 
 <style scoped>
 .img-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 10rem;
   height: 10rem;
   background-color: rgb(222, 222, 222);

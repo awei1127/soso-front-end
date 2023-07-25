@@ -85,11 +85,14 @@ async function removeCartItem(cartItemId) {
     <input :checked="cartItem.checked" @click="toggleCartItem(cartItem.id)" type="checkbox" class="form-check-input mx-3">
     <!--商品圖片-->
     <div class="img-frame">
-      <img :src="cartItem.Product.image" class="img-fluid rounded-start" alt="product-image">
+      <img v-if="cartItem.Product.image" :src="cartItem.Product.image" class="img-fluid rounded-start"
+        alt="product-image">
+      <i v-else class="fa-solid fa-bag-shopping fa-2xl"></i>
     </div>
-    <!--商品名稱-->
+    <!--商品名稱 描述-->
     <div class="product-title mx-3">
       <h3 class="card-title">{{ cartItem.Product.name }}</h3>
+      <p class="description">{{ cartItem.Product.description }}</p>
     </div>
     <!--金額-->
     <div class="price">
@@ -113,6 +116,9 @@ async function removeCartItem(cartItemId) {
 
 <style scoped>
 .img-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 10rem;
   height: 10rem;
   background-color: rgb(222, 222, 222);
@@ -126,6 +132,13 @@ async function removeCartItem(cartItemId) {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 1rem;
 }
 
 .price {

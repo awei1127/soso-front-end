@@ -39,7 +39,9 @@ async function addCartItem(productId) {
 
 <template>
   <div class="card">
-    <img :src="product.image" class="card-img-top" alt="product image">
+    <img v-if="product.image" :src="product.image" class="card-img-top" alt="product-image">
+    <div v-else class="image-frame"><i class="fa-solid fa-bag-shopping fa-2xl"></i></div>
+
     <div class="card-body">
       <h5 class="card-title">{{ product.name }}</h5>
       <p class="card-text text-truncate">{{ product.description }}</p>
@@ -63,5 +65,16 @@ async function addCartItem(productId) {
 .card {
   width: 15rem;
   margin: 0.6rem 0.5rem 0 0.5rem;
+}
+
+.image-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15rem;
+  height: 15rem;
+  background-color: rgb(222, 222, 222);
+  border-top-right-radius: 0.375rem;
+  border-top-left-radius: 0.375rem;
 }
 </style>
