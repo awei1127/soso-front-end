@@ -3,6 +3,8 @@ import axios from 'axios'
 import { ref, onMounted, computed } from 'vue'
 import { useStore } from 'vuex'
 
+const emit = defineEmits(['fetchShopItems'])
+
 const categoriesData = ref(null)
 const categoriesStatus = ref('')
 const store = useStore()
@@ -57,6 +59,7 @@ async function submitForm() {
       }
     })
     if (response.data.status === 'success') {
+      emit('fetchShopItems')
       alert('已成功新增商品')
     } else {
       alert(response.data.message)

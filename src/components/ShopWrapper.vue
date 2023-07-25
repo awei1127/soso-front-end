@@ -3,6 +3,8 @@ import axios from 'axios'
 import { ref, computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import ShopItemCard from './ShopItemCard.vue'
+import AddProductModal from '../components/AddProductModal.vue'
+import SosoLogo from '../components/SosoLogo.vue'
 
 const shopData = ref(null)
 const shopStatus = ref('')
@@ -10,11 +12,11 @@ const store = useStore()
 const userToken = computed(() => store.state.userToken)
 
 onMounted(() => {
-  // 取得購物車物品資料
+  // 取得商品資料
   fetchShopItems()
 })
 
-// 定義函數：取得購物車物品資料
+// 定義函數：取得商品資料
 async function fetchShopItems() {
   try {
     const response = await axios.get(`${import.meta.env.VITE_HOST}/api/v1/shop`, {
@@ -36,8 +38,15 @@ async function fetchShopItems() {
 </script>
 
 <template>
+  <div class="d-flex align-items-center header-wrapper">
+    <SosoLogo />
+    <div class="ms-5">
+      <h1>賣家中心</h1>
+    </div>
+    <AddProductModal @fetchShopItems="fetchShopItems" />
+  </div>
   <div>
-    <!--購物車物品清單-->
+    <!--商品清單-->
     <ShopItemCard v-for="shopItem in shopData" :key="shopItem.id" :shopItem="shopItem" @fetchShopItems="fetchShopItems" />
   </div>
 </template>
@@ -61,5 +70,18 @@ async function fetchShopItems() {
 
 .price {
   width: 12rem;
+}
+
+.shop-list {
+  background-color: rgba(225, 247, 255, 0.7);
+  min-height: 90vh;
+}
+
+.header-wrapper {
+  height: 8rem;
+}
+
+h1 {
+  color: rgb(255, 123, 0);
 }
 </style>

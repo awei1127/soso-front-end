@@ -1,18 +1,9 @@
 <script setup>
-import AddProductModal from '../components/AddProductModal.vue'
 import ShopWrapper from '../components/ShopWrapper.vue'
-import SosoLogo from '../components/SosoLogo.vue'
 </script>
 
 <template>
   <main class="shop-list container-xxl">
-    <div class="d-flex align-items-center header-wrapper">
-      <SosoLogo />
-      <div class="ms-5">
-        <h1>賣家中心</h1>
-      </div>
-      <AddProductModal />
-    </div>
     <ShopWrapper />
   </main>
 </template>

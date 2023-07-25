@@ -16,7 +16,7 @@ const shopItemStatus = ref('')
 const store = useStore()
 const userToken = computed(() => store.state.userToken)
 
-// 定義函數：改變購物車物品勾選狀態
+// 定義函數：改變商品上架狀態
 async function toggleShopItem(shopItemId) {
   try {
     const response = await axios.put(`${import.meta.env.VITE_HOST}/api/v1/shop/${shopItemId}`, {}, {
