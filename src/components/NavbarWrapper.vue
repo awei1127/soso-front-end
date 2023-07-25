@@ -3,7 +3,9 @@ import axios from 'axios'
 import { ref, onMounted, computed, watch } from 'vue'
 import SignInModal from './SignInModal.vue'
 import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const userData = ref(null)
 const userStatus = ref('')
 const store = useStore()
@@ -54,6 +56,7 @@ function logout() {
   store.commit('SET_USER_TOKEN', '')
   localStorage.removeItem('userToken')
   alert('你已成功登出')
+  router.push('/')
 }
 
 </script>
@@ -67,11 +70,13 @@ function logout() {
             <a class="nav-link" aria-current="page" href="/products">回首頁</a>
           </li>
           <li v-if="userToken && userData && userData.role === 'seller'" class="nav-item">
-            <a class="nav-link">賣家中心</a>
+            <a class="nav-link" href="/shop">賣家中心</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li v-if="userToken" class="nav-item">
+          <li v-if="userToken && userData && userData.role === 'seller'" class="nav-item">
+          </li>
+          <li v-else-if="userToken" class="nav-item">
             <a class="nav-link" href="/cart">購物車</a>
           </li>
           <li v-else class="nav-item">
