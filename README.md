@@ -1,35 +1,43 @@
 # soso-front-end
 
-This template should help get you started developing with Vue 3 in Vite.
+## 簡介
 
-## Recommended IDE Setup
+這是一個使用Vue.js開發的購物網站前端應用。使用者可以查看商品，添加商品到購物車，並進行結帳。賣家使用者可以新增商品，下架商品。
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 安裝
 
-## Customize configuration
+為了在本地運行這個專案，你需要先安裝Node.js和npm。然後，你可以遵循以下步驟來安裝並運行這個專案：
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1. 下載或 clone 此儲存庫到你的電腦。
+2. 在終端或命令提示字元中，導航到專案的根目錄。
+3. 運行 npm install 來安裝必要的依賴套件。
+4. 在專案的根目錄建立 .env 檔案，在檔案中加入 VITE_HOST=http://localhost:3000
+5. 運行 npm run dev 來啟動開發伺服器。
 
-## Project Setup
+如果一切順利，你現在應該能在 http://localhost:5173 看到這個應用運行。
 
-```sh
-npm install
-```
+此時便可安裝另一個專案，這個應用的後端部分 https://github.com/awei1127/soso-back-end
 
-### Compile and Hot-Reload for Development
+## 使用說明
 
-```sh
-npm run dev
-```
++ 在首頁，你可以查看所有商品。
++ 你可以點擊左方分類來查看分類商品，或在上方搜尋框輸入想要找的商品。
++ 你也可以透過搜尋框下方的篩選工具來選擇排序方式，或輸入金額來限定商品的價格範圍。
++ 看到喜歡的商品，你可以點擊加入購物車按鈕來添加商品到你的購物車。
++ 你可以通過點擊右上角的購物車來查看你的購物車，並進行結帳。
++ 如果你是賣家使用者，可以通過點擊左上角的賣家中心來查看你的商品清單。
++ 你可以點擊在賣家中心頁面右上角的新增商品按鈕，來新增商品。
 
-### Compile and Minify for Production
+## 已知問題
 
-```sh
-npm run build
-```
++ 登入頁面不會在登入成功後自動關閉。
++ 使用者登入後，暱稱不會被即時更新在上方導航條。
++ 分頁器功能尚未完成。
 
-### Lint with [ESLint](https://eslint.org/)
+## 預計更新項目
 
-```sh
-npm run lint
-```
++ 修復問題
++ 添加註冊視窗
++ 在導航條的購物車字樣顯示當前購物車內商品數量
++ 移除購物車商品前，先跳出確認視窗
++ 在商品、購物車、賣家中心沒有物品時，顯示沒有物品的畫面
