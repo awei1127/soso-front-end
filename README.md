@@ -1,4 +1,4 @@
-# soso-front-end
+# soso-front-end (SOSO購物網)
 
 ## 簡介
 
