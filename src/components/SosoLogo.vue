@@ -1,8 +1,8 @@
 <template>
-  <a class="soso-logo d-flex flex-column" href="/products">
+  <router-link to="/products" class="soso-logo d-flex flex-column">
     <span class="main text-primary">SOSO</span>
     <span class="sub text-end">購物網</span>
-  </a>
+  </router-link>
 </template>
 
 <style scoped>

@@ -41,7 +41,7 @@ async function fetchCategories() {
       </li>
     </ul>
     <div v-else>
-      An error occurred.
+      讀取資料中...
     </div>
   </div>
 </template>

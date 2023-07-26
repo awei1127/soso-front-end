@@ -67,17 +67,17 @@ function logout() {
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/products">回首頁</a>
+            <router-link to="/products" class="nav-link">回首頁</router-link>
           </li>
           <li v-if="userToken && userData && userData.role === 'seller'" class="nav-item">
-            <a class="nav-link" href="/shop">賣家中心</a>
+            <router-link to="/shop" class="nav-link">賣家中心</router-link>
           </li>
         </ul>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li v-if="userToken && userData && userData.role === 'seller'" class="nav-item">
           </li>
           <li v-else-if="userToken" class="nav-item">
-            <a class="nav-link" href="/cart">購物車</a>
+            <router-link to="/cart" class="nav-link">購物車</router-link>
           </li>
           <li v-else class="nav-item">
             <!--這個購物車要顯示登入modal-->
@@ -85,9 +85,6 @@ function logout() {
           </li>
           <li v-if="!userToken" class="nav-item" data-bs-toggle="modal" data-bs-target="#signInModal">
             <a class="nav-link">登入</a>
-          </li>
-          <li v-if="!userToken" class="nav-item">
-            <a class="nav-link">註冊</a>
           </li>
           <li v-if="userToken" @click="logout" class="nav-item">
             <a class="nav-link">登出</a>

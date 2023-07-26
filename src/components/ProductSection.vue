@@ -55,7 +55,7 @@ async function fetchProducts(query) {
     <ProductCard v-for="product in productsData" :key="product.id" :product="product" />
   </div>
   <div v-else>
-    An error occurred.
+    讀取資料中...
   </div>
   <!--分頁器-->
   <PaginationBar />
